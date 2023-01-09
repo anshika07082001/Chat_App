@@ -1,0 +1,49 @@
+<div className='card d-flex flex-row border border-0 m-1 bg-secondary-subtle'>
+            <img className='m-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp6shZoUi9oi_O-3xazRWE4na_hdTg579OLqAeTQDnJrgSIutEnan17IeOR2DvqeFeXnM&usqp=CAU' style={{height:'50px',width:'50px'}} alt=''/>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>Rita pal</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+        </div>
+        <div className='card d-flex flex-row border border-0 m-1 justify-content-end bg-secondary-subtle'>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>You</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+            <img className='m-2' src='https://pixlr.com/studio/template/6264364c-b8cc-4f4f-92d8-28c69a2b756w/thumbnail.webp' style={{height:'50px',width:'50px'}} alt=''/>
+        </div>
+        <div className='card d-flex flex-row border border-0 m-1 bg-secondary-subtle '>
+            <img className='m-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp6shZoUi9oi_O-3xazRWE4na_hdTg579OLqAeTQDnJrgSIutEnan17IeOR2DvqeFeXnM&usqp=CAU' style={{height:'50px',width:'50px'}} alt=''/>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>Rita pal</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+        </div>
+        <div className='card d-flex flex-row border border-0 m-1 justify-content-end bg-secondary-subtle'>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>You</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+            <img className='m-2' src='https://pixlr.com/studio/template/6264364c-b8cc-4f4f-92d8-28c69a2b756w/thumbnail.webp' style={{height:'50px',width:'50px'}} alt=''/>
+        </div>
+        <div className='card d-flex flex-row border border-0 m-1 bg-secondary-subtle'>
+            <img className='m-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp6shZoUi9oi_O-3xazRWE4na_hdTg579OLqAeTQDnJrgSIutEnan17IeOR2DvqeFeXnM&usqp=CAU' style={{height:'50px',width:'50px'}} alt=''/>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>Rita pal</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+        </div>
+        <div className='card d-flex flex-row border border-0 m-1 justify-content-end bg-secondary-subtle'>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>You</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+            <img className='m-2' src='https://pixlr.com/studio/template/6264364c-b8cc-4f4f-92d8-28c69a2b756w/thumbnail.webp' style={{height:'50px',width:'50px'}} alt=''/>
+        </div>
+        <div className='card d-flex flex-row border border-0 m-1 bg-secondary-subtle '>
+            <img className='m-2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp6shZoUi9oi_O-3xazRWE4na_hdTg579OLqAeTQDnJrgSIutEnan17IeOR2DvqeFeXnM&usqp=CAU' style={{height:'50px',width:'50px'}} alt=''/>
+            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
+                <label className='fw-bold'>Rita pal</label>
+                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+            </div>
+        </div>
