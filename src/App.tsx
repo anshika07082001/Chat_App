@@ -1,36 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { auth } from './firebaseConfig'
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 import './App.css';
 import ChatComponent from './component/ChatComponent';
 
 function App() {
-  // var inpRef = useRef('')
-  var [arr,setArr]=useState({})
+  var [arr,setArr]=useState({} as any)
 
-  useEffect(()=>{
-    onAuthStateChanged(auth,'dsd')
-  },[])
-  // console.log(firebaseConfig)
-
+  // Function for Sign in 
   const SignWithGoogle=()=>{
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth,provider)
-  
+    .then(res=>setArr(res.user))
+  }
+  // Function for Sign Out
+  const SignOutWithGoogle=()=>{
+    signOut(auth)
+    .then(()=>setArr({uid:undefined}))
   }
 
   return (
     <div className="App">
-      <div className='d-flex flex-row mb-3 align-items-center justify-content-around '>
-        <div className='d-flex flex-row'>
-          <img src='https://png.pngtree.com/element_our/png/20181229/vector-chat-icon-png_302635.jpg' alt='' style={{height:'50px'}}/>
-          <h2>Chat App</h2>
+      <nav className="navbar bg-primary col-12 position-fixed fixed-top">
+        <div className="container-fluid">
+          <div className='d-flex flex-row align-items-center'>
+            <img src='icon.png' alt='' style={{height:'50px'}}/>
+            <a className="navbar-brand text-white fw-bold fs-2" href='h'>Chat App</a>
+          </div>
+          <div className="d-flex">
+            <button className='border border-0 m-2 text-light rounded-pill p-2 ps-3 pe-3 bg-info fw-bold' onClick={SignWithGoogle}>Sign In</button> 
+            <button className='bg-danger border-0 m-2 text-white rounded-pill p-2 ps-3 pe-3 fw-bold' onClick={SignOutWithGoogle}>LogOut</button>
+          </div>
         </div>
-        <div>
-          <button className='border border-0 m-2 text-light rounded-pill p-2 bg-info' onClick={SignWithGoogle}>Sign In</button>
-          <button className='border border-0 m-2 text-light rounded-pill p-2 bg-danger'>LogOut</button>
-        </div>
-      </div>
+      </nav>
       <ChatComponent arr={arr}/>
     </div>
   );

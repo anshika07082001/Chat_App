@@ -8,3 +8,9 @@
 body {
   background: #f8f9fa;
 }
+
+@media screen and (max-width:440px) {
+  .navbar-brand {
+    display:none;
+  }
+}

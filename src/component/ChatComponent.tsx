@@ -12,26 +12,18 @@ interface ChatsProps {
 }
 
 interface arrProps {
-    arr:Object
+    arr:any,
 }
-
-interface objProps {
-    uid:string
-}
-
 
 const ChatComponent = (props:arrProps) => {
     const months = ["Jan","Feb","Mar","Apr","May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"]; 
-
     var date = `${new Date().getDate()} ${months[new Date().getMonth()]} ${new Date().getHours()}:${new Date().getMinutes()}`;
     const chatRef = ref(db,"/messages")
     var [chatList,setChatList]=useState<ChatsProps[]>([])
-    var [user,setUser]=useState<objProps>()
+    var [user,setUser]=useState({})
+    var inpRef = useRef<HTMLInputElement>(null)
 
-    console.log(props.arr)
-
-    
-
+    // Function renders all chats when app loads after Sign In
     useEffect(()=>{
         onValue(chatRef,(snapshot)=>{
             const chats = snapshot.val()
@@ -39,57 +31,57 @@ const ChatComponent = (props:arrProps) => {
             for(let id in chats){
                 newChatList.push({id,...chats[id]})
             }
-            // console.log(newChatList)
             setChatList(newChatList)
         })
-    },[db])
+        setUser(props.arr)     
+    },[db,props.arr])
 
-    var inpRef = useRef<HTMLInputElement>(null)
+    // function controls scrolling of the page
+    useEffect(()=>{
+        window.scrollTo(0, document.body.scrollHeight);
+    },[chatList])
 
+    // function sends the chats to the database
     const sendHandler=()=>{
-        if (inpRef.current !== null) {
-            let date = `${new Date().getDate()} ${months[new Date().getMonth()]} ${new Date().getHours()}:${new Date().getMinutes()}`;
-            push(ref(db, "/messages"), {
-              uid: props.arr,
-              userPic: props.arr,
-              txt: inpRef.current.value,
-              createdAt: date.toString(),
-            });
-            inpRef.current.value = "";
-        } 
+        if(inpRef.current?.value!==''){
+            if (inpRef.current !== null) {
+                push(ref(db, "/messages"),{
+                  uid: props.arr.uid,
+                  userPic: props.arr.photoURL,
+                  txt: inpRef.current.value,
+                  createdAt: date.toString(),
+                });
+                setUser({...props.arr})           
+                inpRef.current.value = "";
+            } 
+        }
+        else{
+            alert('please write something')
+        }
     }
 
-    // console.log(chatList)
-
-  return (
-    <div className='pb-5 position-relative' style={{width:'50%'}}>
-        {chatList.map((item)=>{
-            // console.log(props.pic)
-            return (
-                <Chats userPic={item.userPic} id={item.id} uid={item.uid} txt={item.txt} createdAt={item.createdAt} />
-            )
-        })}
-
-        {}
-        
-        <div className='card d-flex flex-row border border-0  m-1 justify-content-end bg-secondary-subtle '>
-            <div className='card d-flex flex-column bg-light ps-2 pe-5 pt-2 ms-2 bg-primary-subtle'>
-                <label className='fw-bold'>You</label>
-                <p>yfgdfd jdfdsf jfdhsfdsf jfhdf hello</p>
+    if(props.arr.uid !== undefined ){
+        return (
+        <div className='pb-5 pt-5 mt-5 col-12 position-relative'>
+            <div className='col-12 position-relative' >
+                {chatList.map((item)=>{
+                    return (
+                        <Chats userPic={item.userPic} id={item.id} uid={item.uid} txt={item.txt} createdAt={item.createdAt} user={user} />
+                    )
+                })}
             </div>
-            <img className='m-2' src='https://pixlr.com/studio/template/6264364c-b8cc-4f4f-92d8-28c69a2b756w/thumbnail.webp' style={{height:'50px',width:'50px'}} alt=''/>
+            <div className=' position-fixed fixed-bottom align-items-center d-flex justify-content-center col-12 '>
+                <input type='text' placeholder='Type Your Message' ref={inpRef} className='col-9 p-2 rounded border border-dark'/>
+                <button className='p-2 rounded color-white bg-primary border-0 ps-3 pe-3' onClick={sendHandler}>Send</button>
+            </div>
         </div>
-        
-        {/*   
-        
-        
-        */}
-        <div className=' position-fixed bottom-0 col-6 align-items-center d-flex justify-content-center '>
-            <input type='text' placeholder='Type Your Message' ref={inpRef} className=' p-2 rounded border border-dark' style={{width:'70%'}}/>
-            <button className='p-2 rounded color-white bg-primary border-0' onClick={sendHandler}>Send</button>
-        </div>
-    </div>
-  )
+        )
+    }
+    else{
+        return (
+        <h1 className='text-success m-5 pt-5 fw-bold'>Sign In To start the Chat!!</h1>
+        )
+    }
 }
 
 export default ChatComponent
